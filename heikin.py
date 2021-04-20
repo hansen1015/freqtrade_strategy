@@ -16,24 +16,21 @@ import numpy  # noqa
 
 
 class heikin(IStrategy):
-    """
-        this strategy is based around the idea of generating a lot of potentatils buys and make tiny profits on each trade
-
-        we recommend to have at least 60 parallel trades at any time to cover non avoidable losses
-    """
 
     timeframe = '1h'
+    #I haven't found the best roi and stoplost, so feel free to explore.
     minimal_roi = {
         "0": 10,
     }
     stoploss = -0.99
+    
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:   
         dataframe['hclose']=(dataframe['open'] + dataframe['high'] + dataframe['low'] + dataframe['close']) / 4
-        dataframe['hopen']= ((dataframe['open'].shift(2) + dataframe['close'].shift(2))/ 2)
+        dataframe['hopen']= ((dataframe['open'].shift(2) + dataframe['close'].shift(2))/ 2) #it is not the same as real heikin ashi since I found that this is better.
         dataframe['hhigh']=dataframe[['open','close','high']].max(axis=1)
         dataframe['hlow']=dataframe[['open','close','low']].min(axis=1)
 
-        dataframe['emac'] = ta.SMA(dataframe['hclose'], timeperiod=6)
+        dataframe['emac'] = ta.SMA(dataframe['hclose'], timeperiod=6) #to smooth out the data and thus less noise.
         dataframe['emao'] = ta.SMA(dataframe['hopen'], timeperiod=6)
         return dataframe
         
