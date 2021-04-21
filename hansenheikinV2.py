@@ -15,7 +15,7 @@ import freqtrade.vendor.qtpylib.indicators as qtpylib
 import numpy  # noqa
 
 
-class hansenheikin(IStrategy):
+class hansenheikinV2(IStrategy):
 
     timeframe = '1h'
     #I haven't found the best roi and stoplost, so feel free to explore.
