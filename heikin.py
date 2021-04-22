@@ -12,11 +12,11 @@ from pandas import DataFrame, DatetimeIndex, merge
 # --------------------------------
 import talib.abstract as ta
 import freqtrade.vendor.qtpylib.indicators as qtpylib
-import numpy  # noqa
+import numpy
 
 #V1
 class heikin(IStrategy):
-
+    #do not use this strategy in live mod. It is not good enough yet and can only be use to find trends.
     timeframe = '1h'
     #I haven't found the best roi and stoplost, so feel free to explore.
     minimal_roi = {
