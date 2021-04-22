@@ -17,9 +17,7 @@ import numpy  # noqa
 
 class hansencandlepattern(IStrategy):
     """
-        this strategy is based around the idea of generating a lot of potentatils buys and make tiny profits on each trade
-
-        we recommend to have at least 60 parallel trades at any time to cover non avoidable losses
+        This strategy is only an experiment using candlestick pattern to be used as buy or sell indicator. Do not use this strategy live.
     """
 
     timeframe = '1h'
@@ -46,11 +44,7 @@ class hansencandlepattern(IStrategy):
     def populate_buy_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         dataframe.loc[
             (
-                ((dataframe['3LINESTRIKE'] < 0)|
-                (dataframe['EVENINGSTAR'] > 0)|
-                (dataframe['ABANDONEDBABY'] > 0)|
-                (dataframe['HARAMI'] > 0)|
-                (dataframe['ENGULFING'] > 0))&
+                ((dataframe['3LINESTRIKE'] < 0)|(dataframe['EVENINGSTAR'] > 0)|(dataframe['ABANDONEDBABY'] > 0)|(dataframe['HARAMI'] > 0)|(dataframe['ENGULFING'] > 0))&
                 (dataframe['emao'] < dataframe['emac'])
                 
             ),
