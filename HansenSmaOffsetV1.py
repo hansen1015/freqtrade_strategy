@@ -13,7 +13,20 @@ from pandas import DataFrame, DatetimeIndex, merge
 import talib.abstract as ta
 import freqtrade.vendor.qtpylib.indicators as qtpylib
 import numpy  # noqa
+""" use 15 open trade, unlimited stake. 
 
+pairlist setting:
+
+"pairlists": [
+        {
+            "method": "VolumePairList",
+            "number_assets": 50,
+            "sort_key": "quoteVolume",
+            "refresh_period": 1800
+        }
+    ],
+
+"""
 
 class HansenSmaOffsetV1(IStrategy):
     timeframe = '15m'
