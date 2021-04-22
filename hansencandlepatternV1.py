@@ -15,7 +15,7 @@ import freqtrade.vendor.qtpylib.indicators as qtpylib
 import numpy  # noqa
 
 
-class hansencandlepattern(IStrategy):
+class hansencandlepatternV1(IStrategy):
     """
         This strategy is only an experiment using candlestick pattern to be used as buy or sell indicator. Do not use this strategy live.
     """
