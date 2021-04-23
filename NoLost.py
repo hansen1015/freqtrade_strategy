@@ -20,7 +20,7 @@ class NoLost(IStrategy):
     minimal_roi = {
         "0": 10,
     }
-    stoploss = -0.99
+    stoploss = -0
     
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:   
       #we don't need this
