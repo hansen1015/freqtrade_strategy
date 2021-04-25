@@ -1,6 +1,5 @@
-# pragma pylint: disable=missing-docstring, invalid-name, pointless-string-statement
-# isort: skip_file
-# --- Do not remove these libs ---
+#This is not made by Hansen1015, I just edit a little bit of the code that makes it more reliable.
+#the author is https://github.com/Bturan19
 import numpy as np  # noqa
 import pandas as pd  # noqa
 from pandas import DataFrame
@@ -13,8 +12,6 @@ from scipy import signal
 
 from freqtrade.strategy import IStrategy
 import technical.indicators as ftt
-# --------------------------------
-# Add your lib to import here
 import talib.abstract as ta
 import freqtrade.vendor.qtpylib.indicators as qtpylib
 def ssl_atr(dataframe, length = 7):
@@ -27,37 +24,26 @@ def ssl_atr(dataframe, length = 7):
     df['sslUp'] = np.where(df['hlv'] < 0, df['smaLow'], df['smaHigh'])
     return df['sslDown'], df['sslUp']
 
-# This class is a sample. Feel free to customize it.
 class PortfolioStrategy(IStrategy):
 
     INTERFACE_VERSION = 2
 
     minimal_roi = {
-        "240": 100
+        "0": 100
     }
 
-    # Optimal stoploss designed for the strategy.
-    # This attribute will be overridden if the config file contains "stoploss".
     stoploss = -99
 
-    # Trailing stoploss
     trailing_stop = False
-    # trailing_only_offset_is_reached = False
-    # trailing_stop_positive = 0.01
-    # trailing_stop_positive_offset = 0.0  # Disabled / not configured
 
-    # Optimal timeframe for the strategy.
     timeframe = '1h'
 
-    # Run "populate_indicators()" only for new candle.
     process_only_new_candles = False
 
-    # These values can be overridden in the "ask_strategy" section in the config.
     use_sell_signal = True
     sell_profit_only = False
     ignore_roi_if_buy_signal = True
 
-    # Number of candles the strategy requires before producing valid signals
     startup_candle_count: int = 240
 
     # Optional order type mapping.
@@ -68,7 +54,6 @@ class PortfolioStrategy(IStrategy):
         'stoploss_on_exchange': False
     }
 
-    # Optional order time in force.
     order_time_in_force = {
         'buy': 'gtc',
         'sell': 'gtc'
@@ -151,7 +136,7 @@ class PortfolioStrategy(IStrategy):
 
         dataframe.loc[
             (
-                (dataframe['pred4'] > .52) & 
+                (dataframe['pred4'] > .52) & #this is where I edit the code
                 (dataframe["time_hour"].isin([23,2,5,8,11,14,17,20])) &
                 (dataframe['volume'] > 0)  # Make sure Volume is not 0
             ),
@@ -163,7 +148,7 @@ class PortfolioStrategy(IStrategy):
 
         dataframe.loc[
             (
-                (dataframe['pred4'] < .30) & 
+                (dataframe['pred4'] < .30) & #this is where I edit the code
                 (dataframe["time_hour"].isin([23,2,5,8,11,14,17,20])) &
                 (dataframe['volume'] > 0)  # Make sure Volume is not 0
             ),
