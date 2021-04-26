@@ -1,6 +1,5 @@
-# pragma pylint: disable=missing-docstring, invalid-name, pointless-string-statement
-# isort: skip_file
-# --- Do not remove these libs ---
+#This is not made by Hansen1015, I just edit a little bit of the code that makes it more reliable.
+#the author is https://github.com/Bturan19
 import numpy as np  # noqa
 import pandas as pd  # noqa
 from pandas import DataFrame
