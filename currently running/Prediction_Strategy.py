@@ -1,6 +1,4 @@
-# pragma pylint: disable=missing-docstring, invalid-name, pointless-string-statement
-# isort: skip_file
-# --- Do not remove these libs ---
+# For the pkl file, it is at: https://drive.google.com/file/d/1-L3ZQAOsBIpYa5ibStH84Edle8XOCGn_/view?usp=sharing
 import numpy as np  # noqa
 import pandas as pd  # noqa
 from pandas import DataFrame
